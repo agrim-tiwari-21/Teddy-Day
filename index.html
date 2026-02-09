@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Vanshika ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  height:100vh;
+  background:radial-gradient(circle at top,#1a1a2e,#0b0b15);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:#fbeaea;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Candle glow */
+body::before{
+  content:'';
+  position:absolute;
+  width:340px;height:340px;
+  background:radial-gradient(circle,rgba(255,200,150,0.35),transparent 70%);
+  animation:flicker 3s infinite alternate;
+}
+@keyframes flicker{from{opacity:.7}to{opacity:1}}
+
+/* Envelope */
+.envelope{
+  width:330px;height:220px;
+  position:relative;cursor:pointer;
+}
+.back{
+  background:#6b1d3a;
+  width:100%;height:100%;
+  border-radius:14px;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
+.name{
+  position:absolute;top:90px;width:100%;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;
+  color:#ffd6e0;
+  letter-spacing:2px;
+}
+.front{
+  position:absolute;width:0;height:0;
+  border-left:165px solid transparent;
+  border-right:165px solid transparent;
+  border-top:120px solid #9b2847;
+  top:0;transform-origin:top;
+  transition:1s;
+}
+.envelope.open .front{transform:rotateX(180deg)}
+
+/* Letter stack */
+.letter{
+  position:absolute;
+  width:94%;height:180%;
+  background:#fff;
+  color:#4b1c2f;
+  top:18px;left:3%;
+  border-radius:16px;
+  padding:24px;
+  transform:translateY(140%);
+  transition:1s ease;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+.envelope.open .letter{transform:translateY(-48%)}
+
+/* Page style */
+.page{
+  display:none;
+  animation:addPage .8s ease;
+}
+.page.active{display:block}
+@keyframes addPage{
+  from{transform:translateY(40px) scale(.95);opacity:0}
+  to{transform:translateY(0) scale(1);opacity:1}
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  margin-bottom:10px;
+}
+p{
+  font-size:.9rem;
+  line-height:1.75;
+}
+.teddy{
+  font-size:3.4rem;
+  margin:10px 0;
+  animation:float 3s infinite;
+}
+@keyframes float{
+  50%{transform:translateY(-10px)}
+}
+
+/* Buttons */
+.btn{
+  margin-top:15px;
+  padding:10px 22px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:.85rem;
+  cursor:pointer;
+}
+.hug{animation:hug .8s}
+.kiss{animation:kiss .8s}
+@keyframes hug{50%{transform:scale(1.3)}}
+@keyframes kiss{50%{transform:scale(1.4) rotate(-8deg)}}
+
+/* Floating hearts / lips */
+.heart,.lip{
+  position:absolute;
+  animation:rise 3s linear forwards;
+}
+@keyframes rise{
+  from{opacity:1;transform:translateY(0)}
+  to{opacity:0;transform:translateY(-150px)}
+}
+
+/* Signature */
+.signature{
+  margin-top:18px;
+  font-family:'Dancing Script',cursive;
+  font-size:1.4rem;
+  color:#7a1c3d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" id="envelope" onclick="openEnvelope()">
+  <div class="back"></div>
+  <div class="name">Vanshika 💌</div>
+  <div class="front"></div>
+
+  <div class="letter" onclick="event.stopPropagation()">
+
+    <div class="page active">
+      <h1>Hey Vanshika ❤️</h1>
+      <div class="teddy">🧸</div>
+      <p>
+        Ye koi normal letter nahi hai…<br>
+        ye woh baatein hain jo main raat ko<br>
+        sirf tumhare baare mein sochte hue likhta hoon 💖
+      </p>
+      <button class="btn" onclick="nextPage()">Turn Page 📖</button>
+    </div>
+
+    <div class="page">
+      <p>
+        Agar main teddy hota na,<br>
+        toh tum mujhe seene se laga ke soti,<br>
+        aur main tumhari saari thakaan chura leta 😌❤️
+      </p>
+      <button class="btn" onclick="nextPage()">Next Page 💞</button>
+    </div>
+
+    <div class="page">
+      <p>
+        Distance sirf shehron ka hai jaan,<br>
+        meri baahon ka haq toh sirf tumhara hai 💗<br>
+        Aur haan… sharing bilkul allowed nahi 😤
+      </p>
+      <button class="btn" onclick="nextPage()">Feel More 🕯️</button>
+    </div>
+
+    <div class="page">
+      <div class="teddy" id="teddy">🧸</div>
+      <p>
+        Phone thoda paas lao…<br>
+        aur ek tight hug de do 🤍
+      </p>
+      <button class="btn" onclick="hug()">🤗 Hug Me</button>
+    </div>
+
+    <div class="page">
+      <div class="teddy" id="kiss">💋</div>
+      <p>
+        Ye ek chhota sa kiss…<br>
+        par ismein meri poori feelings chhupi hain 😌
+      </p>
+      <button class="btn" onclick="kiss()">💋 Kiss Me</button>
+    </div>
+
+    <div class="page">
+      <p>
+        Tum meri aadat ho,<br>
+        meri comfort ho,<br>
+        meri teddy ho… 🧸
+      </p>
+
+      <div class="signature">
+        Love,<br> Agrim ❤️
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let opened=false;
+let pages=document.querySelectorAll('.page');
+let i=0;
+
+function openEnvelope(){
+  if(!opened){
+    envelope.classList.add('open');
+    opened=true;
+  }
+}
+function nextPage(){
+  pages[i].classList.remove('active');
+  i++;
+  pages[i].classList.add('active');
+}
+function hug(){
+  teddy.classList.add('hug');
+  spawn('❤️');
+  setTimeout(()=>{teddy.classList.remove('hug');nextPage()},900);
+}
+function kiss(){
+  let k=document.getElementById('kiss');
+  k.classList.add('kiss');
+  spawn('💋');
+  setTimeout(()=>{
+    alert("Happy Teddy Day Vanshika 🧸❤️");
+  },1200);
+}
+function spawn(sym){
+  for(let j=0;j<12;j++){
+    let e=document.createElement('div');
+    e.className=sym==='💋'?'lip':'heart';
+    e.innerHTML=sym;
+    e.style.left=(50+Math.random()*60-30)+'%';
+    e.style.bottom='45%';
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),3000);
+  }
+}
+</script>
+
+</body>
+</html>
